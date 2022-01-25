@@ -2,9 +2,9 @@
 
 ## Usage
 
-To use this project simply install the dependencies then run the command 
+<p>To use this project simply install the dependencies then run the command</p> 
 > $npm start
-Then in another terminal run the command:
+<p>Then in another terminal run the command</p>
 > $npm run server
 
 ## Technologies
