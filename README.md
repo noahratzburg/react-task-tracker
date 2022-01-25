@@ -3,9 +3,9 @@
 ## Usage
 
 To use this project simply install the dependencies then run the command 
-$npm start
+> $npm start
 Then in another terminal run the command:
-$npm run server
+> $npm run server
 
 ## Technologies
 ### ReactJS
