@@ -12,6 +12,7 @@ function App() {
     
   ])
 
+/* Method is used when webpage first loads. Fetches the tasks from server and sets state of front end. */
   useEffect(() => {
     const getTasks = async () => {
       const tasksFromServer = await fetchTasks()
@@ -21,21 +22,21 @@ function App() {
     getTasks()
   }, [])
 
-  // Fetch Tasks from server
+/* Fetches all tasks from server and converts to json object */
   const fetchTasks = async () => {
     const res = await fetch('http://localhost:5000/tasks')
     const data = await res.json()
     
     return data
   }
-  // Fetch Task
+/* Fetches task of given id from server and converts to json object */ 
   const fetchTask = async (id) => {
     const res = await fetch(`http://localhost:5000/tasks/${id}`)
     const data = await res.json()
     
     return data
   }
-  // Delete Task
+/* Deletes task of given id from server */
   const deleteTask = async (id) => {
     await fetch(`http://localhost:5000/tasks/${id}`, { 
       method:'DELETE' 
@@ -44,7 +45,7 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
-  //Toggle reminder
+/* Toggles the reminder of a task with given id */
   const toggleReminder = async (id) => {
     const taskToToggle = await fetchTask(id)
     const updTask = {...taskToToggle, reminder: !taskToToggle.reminder}
@@ -61,7 +62,7 @@ function App() {
     setTasks(tasks.map((task) => task.id === id ? {...task, reminder: data.reminder} : task))
   }
 
-  //Add Task
+/* Adds a task to the server. */
   const addTask = async (task) => {
     const res = await fetch('http://localhost:5000/tasks', {
       method: 'POST',
@@ -74,10 +75,6 @@ function App() {
     const data = await res.json()
 
     setTasks([...tasks, data])
-
-    //const id = Math.floor(Math.random() * 10000) + 1
-    //const newTask = {id, ...task}
-    //setTasks([...tasks, newTask])
   }
 
   return (
